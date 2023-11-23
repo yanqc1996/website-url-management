@@ -39,7 +39,7 @@ const routes = [
     path: "/login",
     element: <LoginPage />,
   },
-  { path: "upload", element: <Upload /> },
+  { path: "/upload", element: <Upload /> },
 ];
 
 export { routes };
