@@ -4,7 +4,8 @@ import LoginPage from "../layout/components/Login";
 import App, { authLoader } from "../App";
 import { createBrowserRouter, Navigate } from "react-router-dom";
 import { TableOutlined } from "@ant-design/icons";
-
+import Editor from "../pages/Edit";
+import Upload from "../pages/Upload";
 const TablePage = lazy(() => import("../pages/TablePage"));
 
 const routes = [
@@ -31,9 +32,14 @@ const routes = [
     ],
   },
   {
+    path: "/editor",
+    element: <Editor />,
+  },
+  {
     path: "/login",
     element: <LoginPage />,
   },
+  { path: "upload", element: <Upload /> },
 ];
 
 export { routes };
