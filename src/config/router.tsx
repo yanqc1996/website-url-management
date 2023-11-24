@@ -2,7 +2,7 @@ import React, { lazy } from "react";
 import ErrorPage from "@components/ErrorPage";
 import LoginPage from "../layout/components/Login";
 import App, { authLoader } from "../App";
-import { createBrowserRouter, Navigate } from "react-router-dom";
+import { createHashRouter, Navigate } from "react-router-dom";
 import { TableOutlined } from "@ant-design/icons";
 import Editor from "../pages/Edit";
 import Upload from "../pages/Upload";
@@ -37,11 +37,11 @@ const routes = [
   },
   {
     path: "/login",
-    element: <Upload />,
+    element: <LoginPage />,
   },
-  { path: "/upload", element: <LoginPage /> },
+  { path: "/upload", element: <Upload /> },
 ];
 
 export { routes };
 
-export default createBrowserRouter(routes);
+export default createHashRouter(routes);
