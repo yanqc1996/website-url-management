@@ -37,9 +37,9 @@ const routes = [
   },
   {
     path: "/login",
-    element: <LoginPage />,
+    element: <Upload />,
   },
-  { path: "/upload", element: <Upload /> },
+  { path: "/upload", element: <LoginPage /> },
 ];
 
 export { routes };
