@@ -41,7 +41,7 @@ const UploadComp = () => {
   const [uploadList, setUploadList] = useState<UploadFile[]>([]);
   const props: UploadProps = {
     name: "file",
-    action: "http://118.178.243.82:3002/upload",
+    action: "https://118.178.243.82:3002/upload",
     headers: {
       authorization: "authorization-text",
     },
@@ -65,7 +65,6 @@ const UploadComp = () => {
         <Upload multiple accept="image/*" {...props}>
           <div className={styles.upload}>Click to Upload</div>
         </Upload>
-        <img src="https://rik-website.oss-cn-hangzhou/rik-website/images/7762e486b1c067b9b3b51f2fb2a8e170.jpg"></img>
         {uploadList.length > 0 && (
           <>
             <div className={styles.fileList}>
