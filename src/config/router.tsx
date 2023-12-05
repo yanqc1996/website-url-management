@@ -6,6 +6,7 @@ import { createHashRouter, Navigate } from "react-router-dom";
 import { TableOutlined } from "@ant-design/icons";
 import Editor from "../pages/Edit";
 import Upload from "../pages/Upload";
+import Preview from "../pages/Preview";
 const TablePage = lazy(() => import("../pages/TablePage"));
 
 const routes = [
@@ -40,6 +41,7 @@ const routes = [
     element: <LoginPage />,
   },
   { path: "/upload", element: <Upload /> },
+  { path: "/preview", element: <Preview /> },
 ];
 
 export { routes };

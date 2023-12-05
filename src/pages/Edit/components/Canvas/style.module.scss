@@ -1,0 +1,49 @@
+.canvas {
+  width: 400px;
+  height: 600px;
+  margin: 0 auto;
+  margin-top: 30px;
+  background: #fff;
+  .canvasItem {
+    width: 100%;
+    height: 100px;
+    background: #afadad;
+    border-bottom: 1px solid #686666;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+.comp-wrap {
+  position: relative;
+  &-active {
+    border: 1px solid #1890ff;
+  }
+
+  &:hover {
+    border: 1px dashed #1890ff;
+    .operate-wrap {
+      display: block;
+    }
+  }
+
+  .operate-wrap {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 99;
+    display: none;
+    .operate-item {
+      display: block;
+      margin-bottom: 1px;
+      background: #333;
+      cursor: pointer;
+    }
+  }
+}
+.null-comp {
+  padding: 12px 0;
+  text-align: center;
+  background: lightgray;
+}

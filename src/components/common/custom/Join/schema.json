@@ -1,0 +1,40 @@
+{
+  "type": "base",
+  "children": {
+    "title": {
+      "type": "string",
+      "name": "title",
+      "label": "模块标题",
+      "decorator": "FormItem",
+      "component": "Input"
+    },
+    "content": {
+      "type": "string",
+      "name": "body",
+      "label": "标题内容",
+      "decorator": "FormItem",
+      "component": "Input"
+    },
+    "button": {
+      "type": "object",
+      "name": "button",
+      "label": "CTA编辑",
+      "decorator": "FormItem",
+      "component": "Input",
+      "children": {
+        "text": {
+          "type": "string",
+          "name": "text",
+          "label": "CTA名称",
+          "component": "Input"
+        },
+        "link": {
+          "type": "string",
+          "name": "link",
+          "label": "CTAlink",
+          "component": "Input"
+        }
+      }
+    }
+  }
+}

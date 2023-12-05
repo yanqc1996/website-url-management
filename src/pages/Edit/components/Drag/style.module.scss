@@ -1,0 +1,8 @@
+.dragWrap {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  > div {
+    margin-bottom: 10px;
+  }
+}

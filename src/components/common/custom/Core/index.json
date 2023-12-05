@@ -1,0 +1,25 @@
+{
+  "title": "Our core values",
+  "items": [
+    {
+      "title": "customer-first",
+      "content": "Everything we do, we do it with the customer in mind. If it doesn’t make the customer happy,it doesn’t happen—end of story",
+      "figure": "/next/img/career/customer.png"
+    },
+    {
+      "title": "Integrity",
+      "content": "To us, integrity is a combination of truth, transparency, bravery, and common sense. We will always fight for what we believe in.",
+      "figure": "/next/img/career/integrity.png"
+    },
+    {
+      "title": "Open",
+      "content": "At Vibe, everyone is a beginner. We strive to unlearn our pre-conditioned ideas.We’re always open to diverse perspectives and new challenges.",
+      "figure": "/next/img/career/open.png"
+    },
+    {
+      "title": "Passion",
+      "content": "Our destiny is to build great products for our customers. We are proud of what we do,unwaveringly curious, and unbelievably passionate.",
+      "figure": "/next/img/career/passion.png"
+    }
+  ]
+}

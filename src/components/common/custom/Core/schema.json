@@ -1,0 +1,40 @@
+{
+  "type": "base",
+  "children": {
+    "title": {
+      "type": "string",
+      "name": "title",
+      "label": "模块标题",
+      "decorator": "FormItem",
+      "component": "Input"
+    },
+    "items": {
+      "type": "object",
+      "name": "items",
+      "title": "模块内容",
+      "decorator": "FormItem",
+      "component": "FormItem",
+      "children": {
+        "title": {
+          "type": "string",
+          "name": "title",
+          "label": "模块标题",
+          "component": "Input"
+        },
+        "content": {
+          "type": "string",
+          "name": "content",
+          "label": "模块内容",
+          "component": "Input"
+        },
+        "figure": {
+          "type": "string",
+          "name": "figure",
+          "label": "模块图片",
+          "decorator": "FormItem",
+          "component": "Input"
+        }
+      }
+    }
+  }
+}
