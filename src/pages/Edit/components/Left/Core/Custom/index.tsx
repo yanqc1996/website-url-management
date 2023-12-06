@@ -1,10 +1,10 @@
 import * as DropComponents from "@components/common/custom";
 import Drag from "@pages/Edit/components/Drag";
 import Store from "../../../../store";
-
+import { toJS } from "mobx";
 // 1.组件基础展示：Done
 // 2.组件拖拽包裹逻辑： Done
-// 3. 完成画布开发后，就可以开始考虑连接页面数据流转了 - 不用redux，用mobx吧，怎么快怎么来
+// 3. 完成画布开发后，就可以开始考虑连接页面数据流转了 - 不用redux，用mobx吧，旨在快速完成开发 Done
 const Custom = () => {
   const dragList = Object.values(DropComponents).map((v) => {
     const { compAttr } = v;
@@ -17,7 +17,7 @@ const Custom = () => {
     };
   });
   const { handleDragStart, handleDragEnd } = Store;
-  console.log(dragList, 999);
+  console.log(toJS(dragList), 1981298);
   return (
     <Drag
       data={dragList}

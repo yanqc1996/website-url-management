@@ -1,5 +1,3 @@
-import { PureComponent } from "react";
-import PropTypes from "prop-types";
 import { throttle } from "lodash";
 import classNames from "classnames";
 

@@ -5,7 +5,8 @@ import type { ActionType, ProColumns } from "@ant-design/pro-components";
 import { ProTable, TableDropdown } from "@ant-design/pro-components";
 import { Button, Dropdown } from "antd";
 import { getTableList, addUrlList } from "@services/table";
-
+// import { useHistory } from "react-router";
+import { createHashHistory } from "history";
 export const waitTimePromise = async (time: number = 100) => {
   return new Promise((resolve) => {
     setTimeout(() => {
@@ -14,6 +15,12 @@ export const waitTimePromise = async (time: number = 100) => {
   });
 };
 
+const editor = (record: any) => {
+  // const history = useHistory();
+  const history = createHashHistory();
+  console.log(record, 99999);
+  history.push("/editor");
+};
 export const waitTime = async (time: number = 100) => {
   await waitTimePromise(time);
 };
@@ -73,12 +80,7 @@ const columns: ProColumns<GithubIssueItem>[] = [
     valueType: "option",
     key: "option",
     render: (text, record, _, action) => [
-      <a
-        key="editable"
-        onClick={() => {
-          action?.startEditable?.(record.id);
-        }}
-      >
+      <a key="editable" onClick={() => editor(record)}>
         编辑
       </a>,
       <a key="view">查看</a>,

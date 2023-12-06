@@ -20,7 +20,6 @@ const Preview = () => {
     // @ts-ignore
     const Comp = DropComponents[item.name];
     return <Comp data={item.data} key={item.id} />;
-    // return <div>123</div>;
   });
 };
 export default Preview;

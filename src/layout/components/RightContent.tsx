@@ -16,10 +16,6 @@ const RightContent: React.FC = () => {
       key: "1",
       label: <span onClick={logoutHandle}>退出登录</span>,
     },
-    {
-      key: "2",
-      label: "个人中心",
-    },
   ];
 
   const changeMainColor = (e: ChangeEvent<HTMLInputElement>) => {
@@ -28,11 +24,6 @@ const RightContent: React.FC = () => {
 
   return (
     <Space size={20}>
-      <span style={{ display: "flex" }}>
-        <Badge count={12}>
-          <BellOutlined style={{ fontSize: 24 }} />
-        </Badge>
-      </span>
       <div className={styles.skin}>
         <Button type="primary" shape="circle" icon={<SkinOutlined />} />
         <Input

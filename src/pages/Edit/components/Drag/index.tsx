@@ -17,7 +17,6 @@ const Drag = (props: {
     handleDragStart();
   };
   const dragEnd = (e: DragEvent) => {
-    console.log(9183129);
     e.dataTransfer?.clearData();
     handleDragEnd();
   };
