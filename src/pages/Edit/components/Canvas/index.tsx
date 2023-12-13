@@ -34,7 +34,7 @@ const Canvas = (props: any) => {
     compList.splice(index, 0, { name, id });
     const newSetSelectList = [...compList];
     setCompList([...newSetSelectList]);
-    // sendToIframe();
+    sendToIframe();
   };
   const handleDrop = (index: number, data: any) => {
     const { name, id } = data;
@@ -78,83 +78,89 @@ const Canvas = (props: any) => {
   const handleEditItemClick = (id: string) => {
     handleEditItemCanvas({ id });
   };
-  // const sendToIframe = () => {
-  //   let iframe = document.getElementById("myIframe");
-  //   // 能够发送
-  //   if (iframe?.contentWindow) {
-  //     // 将数据发送给iframe页面
-  //     const message = JSON.stringify(toJS(compList));
-  //     iframe?.contentWindow?.postMessage(message);
-  //   }
-  // };
+  const sendToIframe = () => {
+    let iframe = document.getElementById("myIframe");
+    // 能够发送
+    if (iframe?.contentWindow) {
+      // 将数据发送给iframe页面
+      const message = JSON.stringify(toJS(compList));
+      iframe?.contentWindow?.postMessage(message);
+    }
+  };
   return (
-    <div className={styles.canvas}>
-      {/* <iframe
-        id="myIframe"
-        src={"/#/preview"}
-        frameBorder="0"
-        className={styles.iframe}
-      /> */}
-      {compList.map((item, index) => {
-        console.log(item, 999);
-        const showUp = index > 0;
-        const showDown = index < compList.length - 1 && compList.length > 1;
-        return (
-          <div className={styles["comp-wrap"]}>
-            <Drop
-              show={showDrop}
-              handleDrop={(e: any) => {
-                handleDrop(index, { ...e });
-              }}
-            />
-            <div className={styles["operate-wrap"]}>
-              <Icon
-                className={styles["operate-item"]}
-                type="edit"
-                size={24}
-                onClick={() => {
-                  handleEditItemClick(item.id);
+    <div className={styles.container}>
+      <div className={styles.canvas}>
+        {compList.map((item, index) => {
+          console.log(item, 999);
+          const showUp = index > 0;
+          const showDown = index < compList.length - 1 && compList.length > 1;
+          return (
+            <div className={styles["comp-wrap"]}>
+              <Drop
+                show={showDrop}
+                handleDrop={(e: any) => {
+                  handleDrop(index, { ...e });
                 }}
               />
-              <Icon
-                className={styles["operate-item"]}
-                type="delete"
-                size={24}
-                onClick={(e: MouseEvent) => {
-                  handleOperateItem({ type: "delete", index }, e);
-                }}
-              />
-              {showUp && (
+              <div className={styles["operate-wrap"]}>
                 <Icon
                   className={styles["operate-item"]}
-                  type="up"
+                  type="edit"
                   size={24}
-                  onClick={(e: MouseEvent) => {
-                    handleOperateItem({ type: "up", index }, e);
+                  onClick={() => {
+                    handleEditItemClick(item.id);
                   }}
                 />
-              )}
-              {showDown && (
                 <Icon
                   className={styles["operate-item"]}
-                  type="down"
+                  type="delete"
                   size={24}
                   onClick={(e: MouseEvent) => {
-                    handleOperateItem({ type: "down", index }, e);
+                    handleOperateItem({ type: "delete", index }, e);
                   }}
                 />
-              )}
+                {showUp && (
+                  <Icon
+                    className={styles["operate-item"]}
+                    type="up"
+                    size={24}
+                    onClick={(e: MouseEvent) => {
+                      handleOperateItem({ type: "up", index }, e);
+                    }}
+                  />
+                )}
+                {showDown && (
+                  <Icon
+                    className={styles["operate-item"]}
+                    type="down"
+                    size={24}
+                    onClick={(e: MouseEvent) => {
+                      handleOperateItem({ type: "down", index }, e);
+                    }}
+                  />
+                )}
+              </div>
+              <div className={styles.canvasItem}>{item.name}</div>
             </div>
-            <div className={styles.canvasItem}>{item.name}</div>
-          </div>
-        );
-      })}
-      <Drop
-        show={showDrop}
-        handleDrop={(e: any) => {
-          handleDrop(compList.length, { ...e });
-        }}
-      />
+          );
+        })}
+        <Drop
+          show={showDrop}
+          handleDrop={(e: any) => {
+            handleDrop(compList.length, { ...e });
+          }}
+        />
+      </div>
+      <div className={styles.canvas}>
+        <iframe
+          id="myIframe"
+          src={"/#/preview"}
+          width="100%"
+          height="100%"
+          frameBorder="0"
+          className={styles.iframe}
+        />
+      </div>
     </div>
   );
 };

@@ -1,9 +1,9 @@
-import React, { useState } from "react";
-import { UploadOutlined } from "@ant-design/icons";
+import { useState } from "react";
 import type { UploadFile, UploadProps } from "antd";
-import { Button, message, Upload } from "antd";
+import { message, Upload } from "antd";
 import styles from "./index.module.scss";
 
+// 简单实现一个上传逻辑，这里需要考虑
 const getFileSize = (size: number = 0) => {
   if (!size) return "";
   const k = 1024;
@@ -41,7 +41,7 @@ const UploadComp = () => {
   const [uploadList, setUploadList] = useState<UploadFile[]>([]);
   const props: UploadProps = {
     name: "file",
-    action: "https://118.178.243.82:3002/upload",
+    action: "/testApi/website/upload",
     headers: {
       authorization: "authorization-text",
     },

@@ -52,6 +52,7 @@ const BasicLayout: React.FC = () => {
   );
 
   const onMenuClick: MenuProps["onClick"] = ({ key }) => {
+    console.log(key, 123);
     navigate(key);
   };
 

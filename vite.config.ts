@@ -10,13 +10,15 @@ export default defineConfig({
       "@stores": resolve(__dirname, "src", "stores"),
       "@services": resolve(__dirname, "src", "services"),
       "@utils": resolve(__dirname, "src", "utils"),
+      "@hooks": resolve(__dirname, "src", "hooks"),
     },
   },
   server: {
     proxy: {
       // 配置代理规则
       "/testApi": {
-        target: "http://127.0.0.1:9999",
+        // target: "http://127.0.0.1:9999",
+        target: "http://118.178.243.82:9999",
         changeOrigin: true,
         // rewrite: (path) => path.replace(/^\/testApi/, ""),
       },

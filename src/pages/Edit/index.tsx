@@ -3,13 +3,14 @@ import styles from "./style.module.scss";
 import Left from "./components/Left";
 import Canvas from "./components/Canvas";
 import Right from "./components/Right";
-import { Form, notification } from "antd";
+import { Form, notification, Button } from "antd";
 import { observer } from "mobx-react";
 import * as DropComponents from "@components/common";
 import { toJS } from "mobx";
 import Store from "./store";
 import _, { find, get } from "lodash";
 import { ComponentsListProps } from "./interface";
+import { useNavigateChange } from "@hooks";
 // 编辑页面设计 -> 左侧选择栏，中间画布，右侧数据编辑栏
 // 左侧采用点击展开的效果，节省左侧空间，初版提供 - 组件列表 && 数据列表功能
 const Editor = () => {
@@ -67,23 +68,32 @@ const Editor = () => {
     form.setFieldsValue(_.cloneDeep(matchComp.data));
   };
   return (
-    <div className={styles.container}>
-      <div className={styles.left}>
-        <Left />
+    <>
+      <div className={styles.header}>
+        <Button type="primary">页面保存</Button>
+        <Button style={{ marginLeft: "8px" }}>页面预览</Button>
+        <Button style={{ marginLeft: "8px" }} onClick={() => changePath("/")}>
+          关闭
+        </Button>
       </div>
-      <div className={styles.canvas}>
-        <Canvas handleEditItemCanvas={handleEditItemCanvas} />
+      <div className={styles.container}>
+        <div className={styles.left}>
+          <Left />
+        </div>
+        <div className={styles.canvas}>
+          <Canvas handleEditItemCanvas={handleEditItemCanvas} />
+        </div>
+        <div className={styles.right}>
+          <Right
+            handleSaveBtnClick={handleSave}
+            form={form}
+            schema={activeCompSchema}
+            key={activeCompId}
+            id={activeCompId}
+          />
+        </div>
       </div>
-      <div className={styles.right}>
-        <Right
-          handleSaveBtnClick={handleSave}
-          form={form}
-          schema={activeCompSchema}
-          key={activeCompId}
-          id={activeCompId}
-        />
-      </div>
-    </div>
+    </>
   );
 };
 export default observer(Editor);

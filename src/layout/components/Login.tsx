@@ -36,7 +36,7 @@ const Login = () => {
       <LoginFormPage
         backgroundImageUrl="https://gw.alipayobjects.com/zos/rmsportal/FfdJeJRQWjEeGTpqgBKj.png"
         onFinish={onFinish as any}
-        title="webiste-url-management"
+        title="website-url-management"
         subTitle="website页面定制化配置"
         actions={
           <div
@@ -88,22 +88,6 @@ const Login = () => {
             />
           </>
         )}
-        <div
-          style={{
-            marginBlockEnd: 24,
-          }}
-        >
-          <ProFormCheckbox noStyle name="autoLogin">
-            自动登录
-          </ProFormCheckbox>
-          <a
-            style={{
-              float: "right",
-            }}
-          >
-            忘记密码
-          </a>
-        </div>
       </LoginFormPage>
     </div>
   );

@@ -1,12 +1,12 @@
-import React, { lazy } from "react";
-import ErrorPage from "@components/ErrorPage";
-import LoginPage from "../layout/components/Login";
-import App, { authLoader } from "../App";
-import { createHashRouter, Navigate } from "react-router-dom";
+import { lazy } from "react";
 import { TableOutlined } from "@ant-design/icons";
+import { createHashRouter, Navigate } from "react-router-dom";
+import ErrorPage from "@components/ErrorPage";
+import App, { authLoader } from "../App";
 import Editor from "../pages/Edit";
 import Upload from "../pages/Upload";
 import Preview from "../pages/Preview";
+import LoginPage from "../layout/components/Login";
 const TablePage = lazy(() => import("../pages/TablePage"));
 
 const routes = [
@@ -24,6 +24,7 @@ const routes = [
             icon: <TableOutlined />,
             element: <TablePage />,
           },
+          { path: "/upload", title: "文件上传", element: <Upload /> },
           {
             path: "*",
             element: <Navigate to="/" replace={true} />,
@@ -40,7 +41,6 @@ const routes = [
     path: "/login",
     element: <LoginPage />,
   },
-  { path: "/upload", element: <Upload /> },
   { path: "/preview", element: <Preview /> },
 ];
 

@@ -1,25 +1,16 @@
-/* eslint-disable @typescript-eslint/no-inferrable-types */
 import React, { useRef } from "react";
 import { EllipsisOutlined, PlusOutlined } from "@ant-design/icons";
 import type { ActionType, ProColumns } from "@ant-design/pro-components";
 import { ProTable, TableDropdown } from "@ant-design/pro-components";
 import { Button, Dropdown } from "antd";
 import { getTableList, addUrlList } from "@services/table";
-// import { useHistory } from "react-router";
-import { createHashHistory } from "history";
+import { useNavigate } from "react-router-dom";
 export const waitTimePromise = async (time: number = 100) => {
   return new Promise((resolve) => {
     setTimeout(() => {
       resolve(true);
     }, time);
   });
-};
-
-const editor = (record: any) => {
-  // const history = useHistory();
-  const history = createHashHistory();
-  console.log(record, 99999);
-  history.push("/editor");
 };
 export const waitTime = async (time: number = 100) => {
   await waitTimePromise(time);
@@ -44,63 +35,72 @@ type GithubIssueItem = {
   updated_at: string;
 };
 
-const columns: ProColumns<GithubIssueItem>[] = [
-  {
-    editable: false,
-    title: "页面地址",
-    dataIndex: "url",
-    copyable: true,
-    ellipsis: true,
-  },
-  {
-    editable: false,
-    title: "页面描述",
-    dataIndex: "des",
-    // copyable: true,
-    ellipsis: true,
-  },
-  {
-    title: "创建时间",
-    key: "showTime",
-    dataIndex: "created_at",
-    valueType: "date",
-    sorter: true,
-    hideInSearch: true,
-  },
-  {
-    title: "最后修改时间",
-    key: "updateTime",
-    dataIndex: "update_at",
-    valueType: "date",
-    sorter: true,
-    hideInSearch: true,
-  },
-  {
-    title: "操作",
-    valueType: "option",
-    key: "option",
-    render: (text, record, _, action) => [
-      <a key="editable" onClick={() => editor(record)}>
-        编辑
-      </a>,
-      <a key="view">查看</a>,
-      <TableDropdown
-        key="actionGroup"
-        onSelect={() => action?.reload()}
-        menus={[
-          { key: "copy", name: "复制" },
-          { key: "delete", name: "删除" },
-        ]}
-      />,
-    ],
-  },
-];
+const columns: (
+  editor: (record: any) => void
+) => ProColumns<GithubIssueItem>[] = (editor) => {
+  return [
+    {
+      editable: false,
+      title: "页面地址",
+      dataIndex: "url",
+      copyable: true,
+      ellipsis: true,
+    },
+    {
+      editable: false,
+      title: "页面描述",
+      dataIndex: "des",
+      // copyable: true,
+      ellipsis: true,
+    },
+    {
+      title: "创建时间",
+      key: "showTime",
+      dataIndex: "created_at",
+      valueType: "date",
+      sorter: true,
+      hideInSearch: true,
+    },
+    {
+      title: "最后修改时间",
+      key: "updateTime",
+      dataIndex: "update_at",
+      valueType: "date",
+      sorter: true,
+      hideInSearch: true,
+    },
+    {
+      title: "操作",
+      valueType: "option",
+      key: "option",
+      render: (text, record, _, action) => [
+        <a key="editable" onClick={() => editor(record)}>
+          编辑
+        </a>,
+        <a key="view">查看</a>,
+        <TableDropdown
+          key="actionGroup"
+          onSelect={() => action?.reload()}
+          menus={[
+            { key: "copy", name: "复制" },
+            { key: "delete", name: "删除" },
+          ]}
+        />,
+      ],
+    },
+  ];
+};
 
 const TablePage: React.FC = () => {
   const actionRef = useRef<ActionType>();
+  const navigate = useNavigate();
+  const editor = (record: any) => {
+    console.log(record, 9881871);
+    navigate(`/editor?url=${record?.url}`);
+  };
   return (
     <ProTable<GithubIssueItem>
-      columns={columns}
+      columns={columns(editor)}
       actionRef={actionRef}
       cardBordered
       request={async () => {

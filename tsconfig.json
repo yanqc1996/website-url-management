@@ -22,7 +22,9 @@
       "@stores/*": ["stores/*"],
       "@services/*": ["services/*"],
       "@utils/*": ["utils/*"],
-      "@utils": ["utils/index.ts"]
+      "@utils": ["utils/index.ts"],
+      "@hooks/*": ["hooks/*"],
+      "@hooks": ["hooks/index.ts"]
     }
   },
   "include": ["src"]
